@@ -23,15 +23,15 @@ export default class EventAdder {
                     game.judge(3);
                     break;
                 case "g":
-                    game.spownNote(
-                        new (class _NotesFactory extends NotesFactory {
-                            create(): Notes {
-                                const n = new Notes();
-                                return n;
-                            }
-                        })(),
-                        Math.floor(Math.random() * 4),
-                    );
+                    // game.spownNote(
+                    //     new (class _NotesFactory extends NotesFactory {
+                    //         create(): Notes {
+                    //             const n = new Notes();
+                    //             return n;
+                    //         }
+                    //     })(),
+                    //     Math.floor(Math.random() * 4),
+                    // );
                     break;
             }
         });
