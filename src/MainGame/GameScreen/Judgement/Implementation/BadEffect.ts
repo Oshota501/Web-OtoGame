@@ -7,13 +7,13 @@ export default class BadEffect extends JudgementEffectFactory {
     }
     public override create(): Container {
         return new Text({
-            text: 'Bad',
+            text: "Bad",
             style: {
-                fontFamily: 'Arial',
+                fontFamily: "Arial",
                 fontSize: 24,
                 fill: 0xff9900,
-                align: 'center',
+                align: "center",
             },
-        })
+        });
     }
 }

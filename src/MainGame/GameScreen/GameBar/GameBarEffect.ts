@@ -1,5 +1,5 @@
-import { Filter, GlProgram } from 'pixi.js';
-import type { Ticker } from 'pixi.js';
+import { Filter, GlProgram } from "pixi.js";
+import type { Ticker } from "pixi.js";
 
 // PixiJS v8のデフォルト頂点シェーダーを明示的に指定
 const vertex = `
@@ -58,7 +58,7 @@ export class GameBarEffect extends Filter {
             glProgram,
             resources: {
                 brightnessUniforms: {
-                    uBrightness: { value: 1.0, type: 'f32' },
+                    uBrightness: { value: 1.0, type: "f32" },
                 },
             },
         });
@@ -67,7 +67,11 @@ export class GameBarEffect extends Filter {
     }
 
     private get uniforms(): { uBrightness: number } {
-        return (this.resources.brightnessUniforms as { uniforms: { uBrightness: number } }).uniforms;
+        return (
+            this.resources.brightnessUniforms as {
+                uniforms: { uBrightness: number };
+            }
+        ).uniforms;
     }
 
     public start(d_time: number): void {
@@ -82,8 +86,14 @@ export class GameBarEffect extends Filter {
 
         this.elapsed += ticker.deltaMS / 1000;
 
-        const t = this.duration > 0 ? Math.min(this.elapsed / this.duration, 1.0) : 1.0;
-        this.uniforms.uBrightness = (this.darkBrightness + (1.0 - this.darkBrightness) * t) * this.maxDarkness + (1 - this.maxDarkness);
+        const t =
+            this.duration > 0
+                ? Math.min(this.elapsed / this.duration, 1.0)
+                : 1.0;
+        this.uniforms.uBrightness =
+            (this.darkBrightness + (1.0 - this.darkBrightness) * t) *
+                this.maxDarkness +
+            (1 - this.maxDarkness);
 
         if (t >= 1.0) {
             this.running = false;

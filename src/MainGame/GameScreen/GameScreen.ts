@@ -13,7 +13,7 @@ export interface IGameScreenOption {
         length: number;
         width?: number;
         height?: number;
-    }
+    };
 }
 
 export default class GameScreen extends Container {
@@ -31,7 +31,9 @@ export default class GameScreen extends Container {
         super();
         GameBar.width = opt.bar.width ?? 70;
         GameBar.height = opt.bar.height ?? 600;
-        DefaultJudgementBarGraphics.screenWidth = opt.bar.length * GameBar.width + (opt.bar.length - 1) * GameScreen.gap;
+        DefaultJudgementBarGraphics.screenWidth =
+            opt.bar.length * GameBar.width +
+            (opt.bar.length - 1) * GameScreen.gap;
         for (let i = 0; i < opt.bar.length; i++) {
             const bar = new GameBar();
             bar.position.x = i * (GameBar.width + GameScreen.gap);
@@ -40,7 +42,10 @@ export default class GameScreen extends Container {
         }
         this.judgementbar = new JudgementBar();
         this.judgementeffect = new JudgementEffect([
-            new BadEffect(), new GoodEffect(), new MisstakeEffect(), new PerfectEffect()
+            new BadEffect(),
+            new GoodEffect(),
+            new MisstakeEffect(),
+            new PerfectEffect(),
         ]);
         this.addChild(this.judgementbar, this.judgementeffect);
     }

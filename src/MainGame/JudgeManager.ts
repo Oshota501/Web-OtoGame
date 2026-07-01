@@ -19,7 +19,7 @@ export default class JudgeManager {
     private table: Map<Judgement, number> = new Map();
 
     public judge(noteY: number, judgeY: number): Judgement {
-        const base = Math.abs(noteY - judgeY)
+        const base = Math.abs(noteY - judgeY);
         if (base <= this.perfect) {
             return "perfect";
         } else if (base <= this.good) {

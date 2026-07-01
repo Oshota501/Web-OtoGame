@@ -1,3 +1,3 @@
-type Judgement = "perfect" | "good" | "bad" | "miss"
+type Judgement = "perfect" | "good" | "bad" | "miss";
 
-export default Judgement
+export default Judgement;

@@ -6,6 +6,6 @@ export default class DefaultGameBarGraphics extends Graphics {
         super();
 
         this.rect(0, 0, GameBar.width, GameBar.height);
-        this.fill(0xFFFFFF);
+        this.fill(0xffffff);
     }
 }

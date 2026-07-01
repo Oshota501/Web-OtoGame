@@ -9,7 +9,7 @@ export default class JudgementEffect extends Container {
     constructor(f: JudgementEffectFactory[]) {
         super();
 
-        f.forEach(element => {
+        f.forEach((element) => {
             this.effect.set(element.judge, element);
         });
     }
@@ -21,6 +21,6 @@ export default class JudgementEffect extends Container {
         this.addChild(e);
         setTimeout(() => {
             this.removeChild(e);
-        }, time)
+        }, time);
     }
 }

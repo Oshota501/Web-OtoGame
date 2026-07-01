@@ -16,7 +16,7 @@ export default class MainGame {
         this.screen = new GameScreen({
             bar: {
                 length: length,
-            }
+            },
         });
 
         this.length = length;
@@ -35,9 +35,9 @@ export default class MainGame {
             console.log(`${bar} is out of range`);
             return;
         }
-        note.position.set(GameBar.width * bar + (bar * GameScreen.gap), 0);
+        note.position.set(GameBar.width * bar + bar * GameScreen.gap, 0);
 
-        note.speed = (GameBar.height * 5 / 6) * note.speed;
+        note.speed = ((GameBar.height * 5) / 6) * note.speed;
 
         this.notes[bar].add(note);
 
@@ -51,7 +51,12 @@ export default class MainGame {
             this.notes[bar].forEach((v) => {
                 v.position.y += v.speed * _t.deltaMS * 0.001;
                 if (v.position.y >= GameBar.height) {
-                    this.screen.judgementeffect.add("miss", v.x, v.y + 30, 1000);
+                    this.screen.judgementeffect.add(
+                        "miss",
+                        v.x,
+                        v.y + 30,
+                        1000,
+                    );
                     this.notes[bar].delete(v);
                     this.screen.removeChild(v);
                 }
@@ -63,10 +68,10 @@ export default class MainGame {
         let judgement: Judgement = "miss";
         let notes: Notes | undefined;
         this.notes[bar].forEach((v) => {
-            if (GameBar.height * 5 / 6 - v.y >= GameBar.height * 0.35) {
+            if ((GameBar.height * 5) / 6 - v.y >= GameBar.height * 0.35) {
                 return;
             }
-            const now = this.judgeManager.judge(v.y, GameBar.height * 5 / 6);
+            const now = this.judgeManager.judge(v.y, (GameBar.height * 5) / 6);
             const p = this.judgeManager.compare(judgement, now);
             if (p == now) {
                 notes = v;
@@ -75,7 +80,12 @@ export default class MainGame {
         });
 
         if (notes != undefined) {
-            this.screen.judgementeffect.add(judgement, notes.x, notes.y + 30, 1000);
+            this.screen.judgementeffect.add(
+                judgement,
+                notes.x,
+                notes.y + 30,
+                1000,
+            );
             this.notes[bar].delete(notes);
             this.screen.removeChild(notes);
         }

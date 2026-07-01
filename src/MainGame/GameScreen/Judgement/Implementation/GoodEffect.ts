@@ -7,13 +7,13 @@ export default class GoodEffect extends JudgementEffectFactory {
     }
     public override create(): Container {
         return new Text({
-            text: 'Good',
+            text: "Good",
             style: {
-                fontFamily: 'Arial',
+                fontFamily: "Arial",
                 fontSize: 24,
                 fill: 0x00ffff,
-                align: 'center',
+                align: "center",
             },
-        })
+        });
     }
 }

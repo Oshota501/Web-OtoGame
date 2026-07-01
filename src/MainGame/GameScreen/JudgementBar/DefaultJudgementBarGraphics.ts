@@ -7,7 +7,7 @@ export default class DefaultJudgementBarGraphics extends Graphics {
     constructor() {
         super();
         this.rect(0, 0, DefaultJudgementBarGraphics.screenWidth, 5);
-        this.fill(0xFF0000);
-        this.position.y = GameBar.height * 5 / 6;
+        this.fill(0xff0000);
+        this.position.y = (GameBar.height * 5) / 6;
     }
 }

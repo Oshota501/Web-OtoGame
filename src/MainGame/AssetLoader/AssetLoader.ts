@@ -3,7 +3,7 @@ import { Texture } from "pixi.js";
 export default class AssetsLoader {
     public textures: Map<string, Texture> = new Map<string, Texture>();
 
-    private constructor() { }
+    private constructor() {}
 
     private static instance: AssetsLoader;
 

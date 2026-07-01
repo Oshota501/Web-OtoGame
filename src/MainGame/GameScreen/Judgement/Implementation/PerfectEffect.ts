@@ -7,12 +7,12 @@ export default class PerfectEffect extends JudgementEffectFactory {
     }
     public override create(): Container {
         return new Text({
-            text: 'Perfect!',
+            text: "Perfect!",
             style: {
-                fontFamily: 'Arial',
+                fontFamily: "Arial",
                 fontSize: 24,
                 fill: 0x009999,
-                align: 'center',
+                align: "center",
             },
         });
     }

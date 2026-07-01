@@ -7,13 +7,13 @@ export default class MisstakeEffect extends JudgementEffectFactory {
     }
     public override create(): Container {
         return new Text({
-            text: 'Miss',
+            text: "Miss",
             style: {
-                fontFamily: 'Arial',
+                fontFamily: "Arial",
                 fontSize: 24,
                 fill: 0xff0000,
-                align: 'center',
+                align: "center",
             },
-        })
+        });
     }
 }
