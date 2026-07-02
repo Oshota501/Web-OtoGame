@@ -22,12 +22,14 @@ export default class MusicPlayer {
             notes.speed = this.speed;
             return notes;
         }
-    });
+    })();
 
     public play(data: ChartData) {
         if (!this.isStart) {
             this.noteindex = 0;
-            data.notes.sort((a, b) => { return (a.timing - a.speed) - (b.timing - b.speed) });
+            data.notes.sort((a, b) => {
+                return a.timing - a.speed - (b.timing - b.speed);
+            });
             data.sound.on("end", () => {
                 this.isStart = false;
             });
@@ -63,4 +65,3 @@ export default class MusicPlayer {
         }
     }
 }
-

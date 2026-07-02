@@ -13,7 +13,7 @@ export default class ChartLoader implements IChartLoader {
         const notes: NotesData[] = [];
 
         // 改行で分割して1行ずつ処理
-        const lines = text.split('\n');
+        const lines = text.split("\n");
 
         for (const line of lines) {
             // 前後の空白を削除し、空行の場合はスキップ
@@ -29,7 +29,8 @@ export default class ChartLoader implements IChartLoader {
                 const bar = parseFloat(parts[2]);
 
                 // speedは存在すれば数値に変換、なければ undefined (NotesData側で1になる)
-                const speed = parts.length >= 4 ? parseFloat(parts[3]) : undefined;
+                const speed =
+                    parts.length >= 4 ? parseFloat(parts[3]) : undefined;
 
                 // NaN (Not a Number) になっていないか簡易的なチェック
                 if (!isNaN(timing) && !isNaN(bar)) {

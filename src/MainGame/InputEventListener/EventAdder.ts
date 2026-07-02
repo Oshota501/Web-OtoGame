@@ -1,6 +1,4 @@
 import MainGame from "../MainGame";
-import Notes from "../Notes/Notes";
-import NotesFactory from "../Notes/NotesFactory";
 
 export default class EventAdder {
     constructor(game: MainGame) {

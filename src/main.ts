@@ -3,8 +3,7 @@ import { Application } from "pixi.js";
 import MainGame from "./MainGame/MainGame";
 import MusicPlayer from "./MusicPlayer/MusicPlayer";
 import ChartData from "./MusicPlayer/ChartData";
-import { Howl } from 'howler';
-import ChartLoader from "./MusicPlayer/ChartLoader/ChartLoader";
+import { Howl } from "howler";
 import RandomChartLoader from "./MusicPlayer/ChartLoader/RandomChartLoader";
 import IChartLoader from "./MusicPlayer/ChartLoader/IChartLoader";
 
@@ -25,12 +24,12 @@ window.onload = async () => {
 
     const charts = new ChartData(
         new Howl({
-            src: ['assets/monk.mp3'], // 配列で複数指定すると、ブラウザが対応する形式を自動選択
-            volume: 0.5,                     // 音量 (0.0 ～ 1.0)
-            loop: false,                     // ループ再生の有無
-            preload: true                    // 事前読み込み
+            src: ["assets/monk.mp3"], // 配列で複数指定すると、ブラウザが対応する形式を自動選択
+            volume: 0.5, // 音量 (0.0 ～ 1.0)
+            loop: false, // ループ再生の有無
+            preload: true, // 事前読み込み
         }),
-        await chartLoader.load("assets/monk.wogmap")
+        await chartLoader.load("assets/monk.wogmap"),
     );
 
     document.addEventListener("click", () => {
