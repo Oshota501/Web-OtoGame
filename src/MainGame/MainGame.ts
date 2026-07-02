@@ -6,9 +6,12 @@ import GameBar from "./GameScreen/GameBar/GameBar";
 import Notes from "./GameEvent/Notes/Notes";
 import Judgement from "./Judgement";
 import JudgeManager from "./JudgeManager";
+import ScoreManager from "./ScoreManager/ScoreManager";
 
 export default class MainGame {
     public screen: GameScreen;
+
+    public scoreManager: ScoreManager;
 
     private length: number;
 
@@ -17,13 +20,21 @@ export default class MainGame {
             bar: {
                 length: length,
             },
+            score: {
+                position: {
+                    x: 450,
+                    y: 120,
+                }
+            }
         });
 
         this.length = length;
         for (let bar = 0; bar < length; bar++) {
             this.notes.push(new Set());
         }
-
+        this.scoreManager = new ScoreManager(this.judgeManager, (score, percent) => {
+            this.screen.scoreView.setScore(score, percent);
+        });
         new EventAdder(this);
     }
 
@@ -59,23 +70,30 @@ export default class MainGame {
                     );
                     this.notes[bar].delete(v);
                     this.screen.removeChild(v);
+                    this.scoreManager.add("miss");
                 }
             });
         }
     }
 
+    private barHeight = (GameBar.height * 5) / 6;
+
     public judge(bar: number): Judgement {
         let judgement: Judgement = "miss";
         let notes: Notes | undefined;
         this.notes[bar].forEach((v) => {
-            if ((GameBar.height * 5) / 6 - v.y >= GameBar.height * 0.35) {
+            if (this.barHeight - v.y >= GameBar.height * 0.15) {
                 return;
             }
-            const now = this.judgeManager.judge(v.y, (GameBar.height * 5) / 6);
+            const now = this.judgeManager.judge(v.y, this.barHeight);
             const p = this.judgeManager.compare(judgement, now);
             if (p == now) {
                 notes = v;
                 judgement = now;
+            } else {
+                if (notes != undefined && Math.abs(this.barHeight - v.y) < Math.abs(this.barHeight - notes.y)) {
+                    notes = v;
+                }
             }
         });
 
@@ -89,8 +107,9 @@ export default class MainGame {
             this.notes[bar].delete(notes);
             this.screen.removeChild(notes);
         }
+        this.scoreManager.add(judgement);
         return judgement;
     }
 
-    private judgeManager = new JudgeManager(20, 50, 100);
+    private judgeManager = new JudgeManager(16, 40, 70);
 }

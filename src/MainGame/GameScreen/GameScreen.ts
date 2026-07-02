@@ -7,6 +7,7 @@ import BadEffect from "./Judgement/Implementation/BadEffect";
 import GoodEffect from "./Judgement/Implementation/GoodEffect";
 import MisstakeEffect from "./Judgement/Implementation/MisstakeEffect";
 import PerfectEffect from "./Judgement/Implementation/PerfectEffect";
+import ScoreView from "./DefaultUI/ScoreView";
 
 export interface IGameScreenOption {
     bar: {
@@ -14,6 +15,12 @@ export interface IGameScreenOption {
         width?: number;
         height?: number;
     };
+    score: {
+        position: {
+            x: number,
+            y: number,
+        }
+    }
 }
 
 export default class GameScreen extends Container {
@@ -22,6 +29,7 @@ export default class GameScreen extends Container {
     public bars: GameBar[] = [];
     public judgementbar: JudgementBar;
     public judgementeffect: JudgementEffect;
+    public scoreView: ScoreView;
 
     public get length() {
         return this.bars.length;
@@ -48,6 +56,10 @@ export default class GameScreen extends Container {
             new PerfectEffect(),
         ]);
         this.addChild(this.judgementbar, this.judgementeffect);
+        this.scoreView = new ScoreView();
+        this.scoreView.x = opt.score.position.x;
+        this.scoreView.y = opt.score.position.y;
+        this.addChild(this.scoreView);
     }
 
     public tick(_t: Ticker) {
