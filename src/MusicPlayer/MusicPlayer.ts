@@ -49,7 +49,7 @@ export default class MusicPlayer {
 
     public tick(_t: Ticker) {
         if (this.isStart && this.data) {
-            this.nowTime += _t.deltaMS * 0.001 * 60 / this.bpm;
+            this.nowTime += (_t.deltaMS * 0.001 * 60) / this.bpm;
             while (true) {
                 if (this.noteindex >= this.data.notes.length) {
                     console.log("finish");

@@ -15,7 +15,7 @@ export default class ScoreManager {
         this._score += score;
         this.n++;
         this._percent = this._score / this.n;
-        this.changeListenerFuncs.forEach(element => {
+        this.changeListenerFuncs.forEach((element) => {
             element(this._score, this._percent);
         });
     }
@@ -24,12 +24,13 @@ export default class ScoreManager {
         this._score = 0;
         this.n = 0;
         this._percent = 0;
-        this.changeListenerFuncs.forEach(element => {
+        this.changeListenerFuncs.forEach((element) => {
             element(this._score, this._percent);
         });
     }
 
-    private changeListenerFuncs: Set<((score: number, percent: number) => void)> = new Set();
+    private changeListenerFuncs: Set<(score: number, percent: number) => void> =
+        new Set();
 
     public addListener(func: (score: number, percent: number) => void) {
         this.changeListenerFuncs.add(func);
@@ -45,7 +46,10 @@ export default class ScoreManager {
         return this._percent;
     }
 
-    constructor(judgeManager: JudgeManager, eventFunc?: (score: number, percent: number) => void) {
+    constructor(
+        judgeManager: JudgeManager,
+        eventFunc?: (score: number, percent: number) => void,
+    ) {
         this.judgeManager = judgeManager;
         this.reset();
         if (eventFunc) {

@@ -24,17 +24,20 @@ export default class MainGame {
                 position: {
                     x: 450,
                     y: 120,
-                }
-            }
+                },
+            },
         });
 
         this.length = length;
         for (let bar = 0; bar < length; bar++) {
             this.notes.push(new Set());
         }
-        this.scoreManager = new ScoreManager(this.judgeManager, (score, percent) => {
-            this.screen.scoreView.setScore(score, percent);
-        });
+        this.scoreManager = new ScoreManager(
+            this.judgeManager,
+            (score, percent) => {
+                this.screen.scoreView.setScore(score, percent);
+            },
+        );
         new EventAdder(this);
     }
 
@@ -91,7 +94,11 @@ export default class MainGame {
                 notes = v;
                 judgement = now;
             } else {
-                if (notes != undefined && Math.abs(this.barHeight - v.y) < Math.abs(this.barHeight - notes.y)) {
+                if (
+                    notes != undefined &&
+                    Math.abs(this.barHeight - v.y) <
+                        Math.abs(this.barHeight - notes.y)
+                ) {
                     notes = v;
                 }
             }

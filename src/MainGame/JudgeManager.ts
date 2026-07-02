@@ -10,7 +10,6 @@ class JudgementData {
 }
 
 export default class JudgeManager {
-
     public readonly inputError = 10;
 
     constructor(perfect: number, good: number, bad: number) {
