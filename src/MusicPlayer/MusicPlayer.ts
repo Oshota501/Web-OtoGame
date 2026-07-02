@@ -1,8 +1,8 @@
 import { Ticker } from "pixi.js";
 import MainGame from "../MainGame/MainGame";
 import ChartData from "./ChartData";
-import NoteFactory from "../MainGame/Notes/NotesFactory";
-import Notes from "../MainGame/Notes/Notes";
+import NoteFactory from "../MainGame/GameEvent/Notes/NotesFactory";
+import Notes from "../MainGame/GameEvent/Notes/Notes";
 
 export default class MusicPlayer {
     public game: MainGame;
@@ -23,6 +23,8 @@ export default class MusicPlayer {
             return notes;
         }
     })();
+
+    public bpm: number = 60;
 
     public play(data: ChartData) {
         if (!this.isStart) {
@@ -47,7 +49,7 @@ export default class MusicPlayer {
 
     public tick(_t: Ticker) {
         if (this.isStart && this.data) {
-            this.nowTime += _t.deltaMS * 0.001;
+            this.nowTime += _t.deltaMS * 0.001 * 60 / this.bpm;
             while (true) {
                 if (this.noteindex >= this.data.notes.length) {
                     console.log("finish");

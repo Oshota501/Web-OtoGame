@@ -1,5 +1,5 @@
 import { Graphics } from "pixi.js";
-import GameBar from "../GameScreen/GameBar/GameBar";
+import GameBar from "../../GameScreen/GameBar/GameBar";
 
 export default class DefaultNoteGraphics extends Graphics {
     constructor(width: number, height: number) {

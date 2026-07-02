@@ -1,9 +1,9 @@
 import { Ticker } from "pixi.js";
 import GameScreen from "./GameScreen/GameScreen";
 import EventAdder from "./InputEventListener/EventAdder";
-import NoteFactory from "./Notes/NotesFactory";
+import NoteFactory from "./GameEvent/Notes/NotesFactory";
 import GameBar from "./GameScreen/GameBar/GameBar";
-import Notes from "./Notes/Notes";
+import Notes from "./GameEvent/Notes/Notes";
 import Judgement from "./Judgement";
 import JudgeManager from "./JudgeManager";
 
